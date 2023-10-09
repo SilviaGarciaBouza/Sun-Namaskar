@@ -34,7 +34,7 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun PlayScreem(){
+fun PlayScreem(navController: NavController){
     var asanaImage by rememberSaveable { mutableStateOf(com.github.sunnamaskar.R.drawable.sol) }
     var asanaNAme by rememberSaveable{ mutableStateOf("Tadasana") }
     var breathing by rememberSaveable{ mutableStateOf("Exhala") }

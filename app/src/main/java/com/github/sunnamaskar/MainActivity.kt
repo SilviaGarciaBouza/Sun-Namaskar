@@ -32,8 +32,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.github.sunnamaskar.UI.HomeScreem
 import com.github.sunnamaskar.UI.ItemPracticeScreem
 import com.github.sunnamaskar.UI.PacticeScreem
+import com.github.sunnamaskar.UI.PlayScreem
+import com.github.sunnamaskar.UI.ItemPracticeScreem
+
 import com.github.sunnamaskar.ui.theme.SunNamaskarTheme
 
 class MainActivity : ComponentActivity() {
@@ -46,7 +56,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+
                     MyScaffold()
+
+
                 }
             }
         }
@@ -76,7 +90,7 @@ fun GreetingPreview() {
 @Composable
 fun MyScaffold() {
     Scaffold (topBar = {MyTopBar()}  ,
-        content = {PacticeScreem({})},
+        content = { NavigateToScreems()},
         bottomBar ={ MyBottonNavigation()} )
 
 
@@ -100,7 +114,7 @@ fun MyBottonNavigation() {
     var index  by remember { mutableStateOf(0) }
     BottomAppBar() {
         NavigationBarItem(selected =index == 0,
-            onClick = { index == 0 },
+            onClick = {index==0 },
             icon =
             {
                 Icon(
@@ -112,7 +126,7 @@ fun MyBottonNavigation() {
             label = {Text(text = "Home")}
         )
         NavigationBarItem(selected =index == 1,
-            onClick = { index == 1 },
+            onClick = {index==1 },
             icon =
             {
                 Icon(
@@ -124,7 +138,7 @@ fun MyBottonNavigation() {
             label = {Text(text = "Play")}
         )
         NavigationBarItem(selected =index == 2,
-            onClick = { index == 2 },
+            onClick = {index==2 },
             icon =
             {
                 Icon(
@@ -135,11 +149,38 @@ fun MyBottonNavigation() {
             ,
             label = {Text(text = "Practice")}
         )
+    }
+}
+
+
+
+
+
+//Pro Navigation1: Crea cada objeto es una pantalla
+sealed class Routes(val route: String){
+    object PracticeScreem: Routes("Screem1")
+    object ItemPracticeScreem: Routes("Screem2?imagename={imagename}") {
+        fun createRoute(imagename: Int) = "Screem2?imagename=$imagename"
+    }
+    object HomeScreem: Routes("Screem3")
+    object PlayScreem: Routes("Screem4")
+
+
+}
+
+
+
+
+@Composable
+fun NavigateToScreems() {
+    val navigationController = rememberNavController()
+    NavHost(navController = navigationController, startDestination = Routes.PracticeScreem.route) {
+        composable(Routes.PracticeScreem.route) { PacticeScreem(navigationController) }
+        composable(Routes.ItemPracticeScreem.route, arguments = listOf(navArgument("imagename"){type = NavType.IntType})) {
+                backStackEntry-> ItemPracticeScreem(navigationController, backStackEntry.arguments?.getInt("imagename") ?: R.drawable.sol) }
+        composable(Routes.HomeScreem.route) { HomeScreem(navigationController) }
+        composable(Routes.PlayScreem.route) { PlayScreem(navigationController) }
 
 
     }
-
-
-
-
 }
