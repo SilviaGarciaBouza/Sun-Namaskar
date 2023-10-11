@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,6 +22,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -57,100 +59,48 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-
-                    MyScaffold()
-
-
+                    val navigationController = rememberNavController()
+                    NavHost(navController = navigationController, startDestination = Routes.PracticeScreem.route) {
+                        composable(Routes.PracticeScreem.route) { PacticeScreem(navigationController) }
+                        composable(Routes.ItemPracticeScreem.route, arguments = listOf(navArgument("imagename"){type = NavType.IntType})) {
+                                backStackEntry-> ItemPracticeScreem(navigationController, backStackEntry.arguments?.getInt("imagename") ?: R.drawable.sol) }
+                        composable(Routes.HomeScreem.route) { HomeScreem(navigationController) }
+                        composable(Routes.PlayScreem.route) { PlayScreem(navigationController) }
+                    }
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     SunNamaskarTheme {
-        Greeting("Android")
     }
 }
 
 
 
+
+/*
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyScaffold() {
-    Scaffold (topBar = {MyTopBar()}  ,
+    Scaffold (topBar = { MyTopBarTitle() }  ,
         content = { NavigateToScreems()},
         bottomBar ={ MyBottonNavigation()} )
 
 
-}
+
+*/
 
 
 
 
-@Composable
-fun MyTopBar() {
-    Box(modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.LightGray)
-        .padding(12.dp), Alignment.Center){
-        Text(text = "Saludos Al Sol")}
-}
-
-
-@Composable
-fun MyBottonNavigation() {
-    var index  by remember { mutableStateOf(0) }
-    BottomAppBar() {
-        NavigationBarItem(selected =index == 0,
-            onClick = {index==0 },
-            icon =
-            {
-                Icon(
-                    imageVector = Icons.Default.Home,
-                    contentDescription = "home"
-                )
-            }
-            ,
-            label = {Text(text = "Home")}
-        )
-        NavigationBarItem(selected =index == 1,
-            onClick = {index==1 },
-            icon =
-            {
-                Icon(
-                    imageVector = Icons.Default.PlayArrow,
-                    contentDescription = "Play"
-                )
-            }
-            ,
-            label = {Text(text = "Play")}
-        )
-        NavigationBarItem(selected =index == 2,
-            onClick = {index==2 },
-            icon =
-            {
-                Icon(
-                    imageVector = Icons.Default.List,
-                    contentDescription = "Practice"
-                )
-            }
-            ,
-            label = {Text(text = "Practice")}
-        )
-    }
-}
 
 
 
@@ -170,17 +120,3 @@ sealed class Routes(val route: String){
 
 
 
-
-@Composable
-fun NavigateToScreems() {
-    val navigationController = rememberNavController()
-    NavHost(navController = navigationController, startDestination = Routes.PracticeScreem.route) {
-        composable(Routes.PracticeScreem.route) { PacticeScreem(navigationController) }
-        composable(Routes.ItemPracticeScreem.route, arguments = listOf(navArgument("imagename"){type = NavType.IntType})) {
-                backStackEntry-> ItemPracticeScreem(navigationController, backStackEntry.arguments?.getInt("imagename") ?: R.drawable.sol) }
-        composable(Routes.HomeScreem.route) { HomeScreem(navigationController) }
-        composable(Routes.PlayScreem.route) { PlayScreem(navigationController) }
-
-
-    }
-}

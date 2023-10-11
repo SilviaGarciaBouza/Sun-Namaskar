@@ -22,23 +22,26 @@ import com.github.sunnamaskar.R
 fun HomeScreem(navController: NavController) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(25.dp),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(
-            painterResource(id = R.drawable.sol),
-            contentDescription = "Sun",
-            modifier = Modifier.height(400.dp)
-        )
-        Box(
-            modifier = Modifier
-                .height(200.dp)
-                .verticalScroll(rememberScrollState()), contentAlignment = Alignment.Center
-        ) {
-            Text(text = "El saludo al sol BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA")
+        MyTopAppBar(modifier = Modifier.weight(1f) )
+        Box(modifier = Modifier.weight(4f)) {
+            Image(
+                painterResource(id = R.drawable.sol),
+                contentDescription = "Sun",
+                modifier = Modifier.height(400.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .height(200.dp)
+                    .verticalScroll(rememberScrollState()), contentAlignment = Alignment.Center
+            ) {
+                Text(text = "El saludo al sol BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA BLABLABLABLABLA")
+            }
         }
+        MyBottomAppBar(modifier = Modifier.weight(1f), navController)
     }
 
 

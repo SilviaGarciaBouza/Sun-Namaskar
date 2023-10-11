@@ -13,10 +13,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -35,68 +38,228 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.github.sunnamaskar.R
 import com.github.sunnamaskar.Routes
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun PacticeScreem(navController: NavController){
     //imageItem:(Int)->Unit){
    // var numberImage by rememberSaveable{ mutableStateOf(14) }
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
-    Column (modifier = Modifier
-        .fillMaxSize()
-        .padding(top = 50.dp, bottom = 80.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
-        Row (modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center){
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "", Modifier.clickable{ navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol))})
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(80.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(100.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol))})
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(130.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable {navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(130.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol))})
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable {navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(100.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable { navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol))})
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable {navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-            Spacer(modifier = Modifier.size(80.dp))
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable {navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f), horizontalArrangement = Arrangement.Center) {
-            Image(painterResource(id  = R.drawable.sol), contentDescription = "",Modifier.clickable {navController.navigate(Routes.ItemPracticeScreem.createRoute(R.drawable.sol)) })
+        MyTopAppBar(modifier = Modifier.weight(1f) )
+
+        Box(modifier = Modifier.weight(5f)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 50.dp, bottom = 80.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(80.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(100.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(130.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(130.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(100.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                    Spacer(modifier = Modifier.size(80.dp))
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f), horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painterResource(id = R.drawable.sol),
+                        contentDescription = "",
+                        Modifier.clickable {
+                            navController.navigate(
+                                Routes.ItemPracticeScreem.createRoute(
+                                    R.drawable.sol
+                                )
+                            )
+                        })
+
+                }
+            }
 
         }
+        MyBottomAppBar(modifier = Modifier.weight(1f), navController = navController)
     }
 
 
@@ -104,10 +267,11 @@ fun PacticeScreem(navController: NavController){
 
 
 @Composable
-fun ItemPracticeScreem(navController: NavController, imagename: Int){
+fun ItemPracticeScreem(navController: NavController, imagename: Int) {
     Column(
         Modifier
-            .fillMaxSize()) {
+            .fillMaxSize()
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -120,25 +284,35 @@ fun ItemPracticeScreem(navController: NavController, imagename: Int){
             Card(
                 modifier = Modifier
                     .fillMaxSize(),
-                    //.height(200.dp),
+                //.height(200.dp),
                 // elevation = 20.dp,
                 shape = MaterialTheme.shapes.small,
                 // backgroundColor = Color.White
             ) {
-                Image(
-                    painter = painterResource(imagename),
-                    contentDescription = null,
-                    alpha = 0.5f,
-                    //redondo, borde le pones grosor, color y el redondeado q en este caso lo mismo q la imagen
-                    modifier = Modifier
-                        .padding(22.dp)
-                        .fillMaxSize()
-                )
+                Column {
+
+
+                    Image(
+                        painter = painterResource(imagename),
+                        contentDescription = null,
+                        alpha = 0.5f,
+                        //redondo, borde le pones grosor, color y el redondeado q en este caso lo mismo q la imagen
+                        modifier = Modifier
+                            .padding(22.dp)
+                            .fillMaxSize()
+                    )
+                    Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Button(onClick = { navController.navigate(Routes.PracticeScreem.route) }) {
+
+                            Text(text = "Voltear")
+                        }
+                    }
+                }
             }
         }
     }
-
 }
+
 
 
 
