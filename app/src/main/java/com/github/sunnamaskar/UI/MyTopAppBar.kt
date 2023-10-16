@@ -1,6 +1,7 @@
 package com.github.sunnamaskar.UI
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -35,23 +36,28 @@ fun MyTopAppBar(modifier: Modifier) {
 @ExperimentalMaterial3Api
 @Composable
 fun MyTopAppBar(modifier: Modifier, navController: NavController, isVisible: Boolean) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.LightGray), Alignment.Center,
+    ) {
 
+        TopAppBar(
+            title = { Text(text = "Saludos al Sol") },
+            modifier = Modifier.fillMaxWidth(),
+            //backgroundColor = Color.DarkGray,
+            // contentColor = Color.White,
+            // elevation = 4.dp,
+            //a la izda:
+            navigationIcon = {
+                if (isVisible) {
+                    IconButton(onClick = { navController.navigate("Screem1") }) {
+                        Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
 
-    TopAppBar(
-        title = { Text(text = "Ricky And Morty Characteres") },
-        modifier = Modifier.fillMaxWidth(),
-        //backgroundColor = Color.DarkGray,
-        // contentColor = Color.White,
-        // elevation = 4.dp,
-        //a la izda:
-        navigationIcon = {
-            if (isVisible) {
-                IconButton(onClick = { navController.navigate("Screem1") }) {
-                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
-
+                    }
                 }
-            }
 
-        }
-    )
+            }
+        )
+    }
 }
