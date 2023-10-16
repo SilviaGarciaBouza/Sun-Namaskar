@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
-
+@ExperimentalMaterial3Api
 @Composable
 fun PlayScreem(navController: NavController){
     var asanaImage by rememberSaveable { mutableStateOf(com.github.sunnamaskar.R.drawable.sol) }
@@ -45,7 +46,7 @@ fun PlayScreem(navController: NavController){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        MyTopAppBar(modifier = Modifier.weight(1f) )
+        MyTopAppBar(modifier = Modifier.weight(1f), navController, false )
 
         Box(modifier = Modifier.weight(4f)) {
             Column(
